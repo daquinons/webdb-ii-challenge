@@ -2,8 +2,10 @@ const express = require('express');
 
 const server = express();
 
+const api = require('./services');
+
 server.use(express.json());
 
-server.use('/', (req, res) => res.json({ message: 'Server up and running' }));
+server.use('/api', api);
 
 module.exports = server;
