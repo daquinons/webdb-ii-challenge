@@ -13,8 +13,14 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', (req, res, next) => {
-  res.json({ message: 'Cars POST' });
+router.post('/', async (req, res, next) => {
+  try {
+    const car = req.body;
+    const response = await Cars.create(car);
+    res.status(201).json(response);
+  } catch (error) {
+    next(new Error(error.message));
+  }
 });
 
 module.exports = router;
