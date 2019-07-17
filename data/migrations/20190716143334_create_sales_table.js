@@ -2,11 +2,11 @@ exports.up = function(knex) {
   return knex.schema.createTable('sales', table => {
     table.increments();
     table
-      .integer('car')
+      .integer('car_id')
       .unsigned()
       .notNullable();
     table
-      .foreign('car')
+      .foreign('car_id')
       .references('id')
       .inTable('cars');
   });
